@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-tile',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-tile.component.css']
 })
 export class GameTileComponent implements OnInit {
-
+  @Input() sign:string;
   constructor() { }
 
   ngOnInit(): void {

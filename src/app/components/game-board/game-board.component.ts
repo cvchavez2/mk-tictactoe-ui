@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
-
+  sign22:string = "_";
   constructor() { }
 
   ngOnInit(): void {
