@@ -36,7 +36,7 @@ fdescribe('GameLogicService', () => {
     });
 
     const req = httpMock.expectOne(environment.apiUrl + "?grid=" + grid + "&compSymb=" + "o");
-    expect(req.request.method).toBe("GET");
+    expect(req.request.method).toBe("POST");
     req.flush(null);
   })
 

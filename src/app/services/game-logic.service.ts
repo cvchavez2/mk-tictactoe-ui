@@ -14,6 +14,6 @@ export class GameLogicService {
 
   // "    x    " - when x is center square: "?grid=%20%20%20%20x%20%20%20%20%20"
   getNextGamePlay(gameGrid: string, computerSymbol: string): any {
-    return this.http.get(environment.apiUrl + "?grid=" + gameGrid + "&compSymb=" + computerSymbol);
+    return this.http.post(environment.apiUrl + "?grid=" + gameGrid + "&compSymb=" + computerSymbol, null);
   }
 }
