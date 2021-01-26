@@ -15,6 +15,8 @@ export class GameBoardComponent implements OnInit {
   constructor(private gameLogicService: GameLogicService) { }
 
   ngOnInit(): void {
-  }
+    this.gameState = new GameState();
+    this.gameState.Board = [["x", "x", "o"], ["x", "o", "x"], ["o", "o", "x"]];
 
+  }
 }

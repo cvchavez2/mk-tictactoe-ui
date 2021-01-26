@@ -1,13 +1,5 @@
-<div>
-    <app-game-tile sign="X"></app-game-tile>
-    <app-game-tile sign="O"></app-game-tile>
-    <app-game-tile sign="{{sign22}}"></app-game-tile>
-    <br>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <br>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
+<div *ngFor="let row of gameState.Board">
+    <span style="margin:auto; padding:10px;" *ngFor="let cell of row">
+        <app-game-tile sign="{{cell}}"></app-game-tile>
+    </span>
 </div>
