@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameState } from 'src/app/models/game-state.model';
+import { GameLogicService } from 'src/app/services/game-logic.service';
 
 @Component({
   selector: 'app-game-board',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameBoardComponent implements OnInit {
   sign22:string = "_";
-  constructor() { }
+
+  gameState: GameState;
+  
+  constructor(private gameLogicService: GameLogicService) { }
 
   ngOnInit(): void {
   }
