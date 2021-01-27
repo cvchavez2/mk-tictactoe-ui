@@ -8,15 +8,20 @@ import { GameLogicService } from 'src/app/services/game-logic.service';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
-  sign22:string = "_";
-
   gameState: GameState;
   
   constructor(private gameLogicService: GameLogicService) { }
 
   ngOnInit(): void {
     this.gameState = new GameState();
-    this.gameState.Board = [["x", "x", "o"], ["x", "o", "x"], ["o", "o", "x"]];
+    this.gameState.Board = [["", "", ""], ["", "", ""], ["", "", ""]];
+  }
 
+  tileClick($event){
+    this.gameState.Board[$event.x][$event.y] = "X";
+
+    this.gameLogicService.getNextGamePlay(this.gameState.Board).subscribe(gs=>{
+      this.gameState = gs;
+    });
   }
 }
