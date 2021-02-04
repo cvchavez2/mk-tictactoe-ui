@@ -30,8 +30,8 @@ fdescribe('GameLogicService', () => {
   });
 
   it('should verify that the request method was GET', (done: DoneFn) => {
-    var grid = "----x----";
-    service.getNextGamePlay(grid, "o").subscribe(gameArray => {
+    let grid: string[][] = {};
+    service.getNextGamePlay(grid).subscribe(gameArray => {
       done();
     });
 

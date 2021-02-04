@@ -1,12 +1,12 @@
 export class GameState {
 
-    public Board : string[][];
+    public board : string[][];
     
-    public WinLine_StartBox: Number;
+    public winLine_StartBox: Number;
 
-    public WinLine_EndBox: Number;
+    public winLine_EndBox: Number;
     
-    public Status: GameStatus;    
+    public status: GameStatus;    
 }
 
 enum GameStatus {
