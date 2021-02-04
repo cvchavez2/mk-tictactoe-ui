@@ -9,7 +9,7 @@ export class GameState {
     public status: GameStatus;    
 }
 
-enum GameStatus {
+export enum GameStatus {
     Undefined,
     X,
     O,
