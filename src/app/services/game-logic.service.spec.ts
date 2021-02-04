@@ -1,4 +1,4 @@
-import { TestBed,tick } from '@angular/core/testing';
+import { fakeAsync, TestBed,tick } from '@angular/core/testing';
 import { GameLogicService } from './game-logic.service';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
@@ -40,7 +40,7 @@ describe('GameLogicService', () => {
   //   req.flush(null);
   // })
 
-  it('Should return value of API Game Service - (O for Center[1,1])', ()=>{
+  it('Should return value of API Game Service - (O for Center[1,1])', fakeAsync(()=>{
      var value = [["", "", ""], ["", "", ""], ["", "", ""]];
      gameState.status = GameStatus.Undefined;
      gameState.board = [["", "", ""], ["", "O", ""], ["", "", ""]];
@@ -51,9 +51,9 @@ describe('GameLogicService', () => {
       });
 
       tick();
-        let testRequest: TestRequest = httpMock.expectOne("api/game");
+        let testRequest: TestRequest = httpMock.expectOne("http://localhost:5000/api/game");
         testRequest.flush(JSON.stringify(gameState));
-  });
+  }));
 
 
 
