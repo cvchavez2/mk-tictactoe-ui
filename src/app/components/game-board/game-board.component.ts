@@ -14,13 +14,13 @@ export class GameBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameState = new GameState();
-    this.gameState.Board = [["", "", ""], ["", "", ""], ["", "", ""]];
+    this.gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];
   }
 
   tileClick($event){
-    this.gameState.Board[$event.x][$event.y] = "X";
+    this.gameState.board[$event.x][$event.y] = "X";
 
-    this.gameLogicService.getNextGamePlay(this.gameState.Board).subscribe(gs=>{
+    this.gameLogicService.getNextGamePlay(this.gameState.board).subscribe(gs=>{
       this.gameState = gs;
     });
   }

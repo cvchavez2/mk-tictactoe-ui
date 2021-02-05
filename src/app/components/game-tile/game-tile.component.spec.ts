@@ -16,6 +16,9 @@ describe('GameTileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GameTileComponent);
     component = fixture.componentInstance;
+    component.x = 0;
+    component.y = 0;
+    component.sign = "X";
     fixture.detectChanges();
   });
 
