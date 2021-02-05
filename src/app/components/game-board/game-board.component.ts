@@ -9,7 +9,7 @@ import { GameLogicService } from 'src/app/services/game-logic.service';
 })
 export class GameBoardComponent implements OnInit {
   gameState: GameState;
-  
+
   constructor(private gameLogicService: GameLogicService) { }
 
   ngOnInit(): void {
