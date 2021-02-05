@@ -12,6 +12,7 @@ phases:
     commands:
       - ng build --prod
 artifacts:
-  base-directory: dist/TicTacToeUI
   files:
-    - '**/*'
+    - 'dist/TicTacToeUI/**/*'
+    - appspec.yml
+    - 'deploy-scripts/**/*'
