@@ -14,10 +14,8 @@ export class GameLogicService {
     
   }
 
-  // "    x    " - when x is center square: "?grid=%20%20%20%20x%20%20%20%20%20"
   getNextGamePlay(gameBoard: string[][]): Observable<GameState> {
     return this.http.post<GameState>(environment.apiUrl, gameBoard);
-    //return this.http.post(environment.apiUrl + "?grid=" + gameGrid + "&compSymb=" + computerSymbol, null);
   }
 
   // x x x
