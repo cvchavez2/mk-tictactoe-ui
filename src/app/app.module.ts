@@ -22,8 +22,8 @@ import { HttpClientModule } from  '@angular/common/http';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
