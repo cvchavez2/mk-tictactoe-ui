@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommunicationService } from 'src/app/services/communication/communication.service';
+import { GameLogicService } from 'src/app/services/game-logic.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +11,13 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'TicTacToeUI';
+
+
+  constructor(private communicationService: CommunicationService){
+  
+  }
+
+  restartButtonClick(){
+    this.communicationService.reloadBoard();
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GameState } from 'src/app/models/game-state.model';
+import { GameState, GameStatus } from 'src/app/models/game-state.model';
+import { CommunicationService } from 'src/app/services/communication/communication.service';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 
 @Component({
@@ -10,18 +11,29 @@ import { GameLogicService } from 'src/app/services/game-logic.service';
 export class GameBoardComponent implements OnInit {
   gameState: GameState;
 
-  constructor(private gameLogicService: GameLogicService) { }
-
-  ngOnInit(): void {
-    this.gameState = new GameState();
-    this.gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];
+  constructor(private gameLogicService: GameLogicService,
+    private communicationService: CommunicationService) {
+    communicationService.reloadEvent.subscribe(() => {
+      this.restart();
+    })
   }
 
-  tileClick($event){
-    this.gameState.board[$event.x][$event.y] = "X";
+  ngOnInit(): void {
+    this.restart();
+  }
 
-    this.gameLogicService.getNextGamePlay(this.gameState.board).subscribe(gs=>{
-      this.gameState = gs;
-    });
+  restart() {
+    this.gameState = new GameState();
+    this.gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];
+    this.gameState.status = GameStatus.Undefined;
+  }
+
+  tileClick($event) {
+    if (this.gameState.status === GameStatus.Undefined) {
+      this.gameState.board[$event.x][$event.y] = "X";
+      this.gameLogicService.getNextGamePlay(this.gameState.board).subscribe(gs => {
+        this.gameState = gs;
+      });
+    }
   }
 }

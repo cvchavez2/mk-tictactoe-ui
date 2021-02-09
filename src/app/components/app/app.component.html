@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header (restartEvent)="restartButtonClick()"></app-header>
 
 <div>
-  <router-outlet></router-outlet>
+  <router-outlet (restartEvent)="restartButtonClick()"></router-outlet>
 </div>
