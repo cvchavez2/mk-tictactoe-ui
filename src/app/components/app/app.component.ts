@@ -12,12 +12,4 @@ import { GameLogicService } from 'src/app/services/game-logic.service';
 export class AppComponent {
   title = 'TicTacToeUI';
 
-
-  constructor(private communicationService: CommunicationService){
-  
-  }
-
-  restartButtonClick(){
-    this.communicationService.reloadBoard();
-  }
 }

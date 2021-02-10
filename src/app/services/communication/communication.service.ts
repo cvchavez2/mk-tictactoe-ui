@@ -8,13 +8,13 @@ export class CommunicationService {
 
   constructor() { }
 
-      // Observable string sources
-      private emitReload = new Subject();
-      // Observable string streams
-      reloadEvent = this.emitReload.asObservable();
-      // Service message commands
-      reloadBoard() {
-          this.emitReload.next();
-      }
+  // Observable string sources
+  private emitReload = new Subject();
+  // Observable string streams
+  reloadEvent = this.emitReload.asObservable();
+  // Service message commands
+  reloadBoard() {
+      this.emitReload.next();
+  }
 
 }

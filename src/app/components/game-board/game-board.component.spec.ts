@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { GameState, GameStatus } from 'src/app/models/game-state.model';
+import { CommunicationService } from 'src/app/services/communication/communication.service';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { GameTileComponent } from '../game-tile/game-tile.component';
 
@@ -20,12 +21,14 @@ describe('GameBoardComponent', () => {
       return of(gameState);
     },
   };
+  let communicationService: CommunicationService = new CommunicationService();
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
         providers: [
           { provide: GameLogicService, useValue: gameLogicServiceStub },
+          { provide: CommunicationService, useValue: communicationService }          
         ],
         declarations: [GameBoardComponent, GameTileComponent],
       }).compileComponents();
@@ -41,4 +44,37 @@ describe('GameBoardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('restart should clear board', ()=>{
+    component.gameState.board[0][0] = 'X';
+    component.gameState.board[0][1] = 'X';
+    component.gameState.board[0][2] = 'X';
+    component.gameState.status = GameStatus.X;
+    component.gameState.winLine_StartBox = 1;
+    component.gameState.winLine_EndBox = 3;
+    component.restart();
+    expect(component.gameState.board[0][0]).toEqual('');
+    expect(component.gameState.board[0][1]).toEqual('');
+    expect(component.gameState.board[0][2]).toEqual('');
+    expect(component.gameState.status).toBe(0);
+    expect(component.gameState.winLine_EndBox).toEqual(undefined);
+    expect(component.gameState.winLine_StartBox).toEqual(undefined);
+  });
+
+  it('communication reloadBoard should clear board', ()=>{
+    component.gameState.board[0][0] = 'X';
+    component.gameState.board[0][1] = 'X';
+    component.gameState.board[0][2] = 'X';
+    component.gameState.status = GameStatus.X;
+    component.gameState.winLine_StartBox = 1;
+    component.gameState.winLine_EndBox = 3;
+    communicationService.reloadBoard();
+    expect(component.gameState.board[0][0]).toEqual('');
+    expect(component.gameState.board[0][1]).toEqual('');
+    expect(component.gameState.board[0][2]).toEqual('');
+    expect(component.gameState.status).toBe(0);
+    expect(component.gameState.winLine_EndBox).toEqual(undefined);
+    expect(component.gameState.winLine_StartBox).toEqual(undefined);
+  });
+  
 });

@@ -11,18 +11,17 @@ import { GameLogicService } from 'src/app/services/game-logic.service';
 export class GameBoardComponent implements OnInit {
   gameState: GameState;
 
-  constructor(private gameLogicService: GameLogicService,
-    private communicationService: CommunicationService) {
-    communicationService.reloadEvent.subscribe(() => {
+  constructor(private gameLogicService: GameLogicService, private readonly communicationService: CommunicationService) {
+    this.communicationService.reloadEvent.subscribe(() => {
       this.restart();
-    })
+    });
   }
 
   ngOnInit(): void {
     this.restart();
   }
 
-  restart() {
+  restart():void {
     this.gameState = new GameState();
     this.gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];
     this.gameState.status = GameStatus.Undefined;
