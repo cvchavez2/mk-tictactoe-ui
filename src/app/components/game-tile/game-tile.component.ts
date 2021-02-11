@@ -10,6 +10,8 @@ export class GameTileComponent implements OnInit {
   @Input() sign: string;
   @Input() x: number;
   @Input() y: number;
+  @Input() isWinning: boolean;
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -28,7 +28,7 @@ describe('GameBoardComponent', () => {
       TestBed.configureTestingModule({
         providers: [
           { provide: GameLogicService, useValue: gameLogicServiceStub },
-          { provide: CommunicationService, useValue: communicationService }          
+          { provide: CommunicationService, useValue: communicationService },
         ],
         declarations: [GameBoardComponent, GameTileComponent],
       }).compileComponents();
@@ -45,7 +45,7 @@ describe('GameBoardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('restart should clear board', ()=>{
+  it('restart should clear board', () => {
     component.gameState.board[0][0] = 'X';
     component.gameState.board[0][1] = 'X';
     component.gameState.board[0][2] = 'X';
@@ -61,7 +61,7 @@ describe('GameBoardComponent', () => {
     expect(component.gameState.winLine_StartBox).toEqual(undefined);
   });
 
-  it('communication reloadBoard should clear board', ()=>{
+  it('communication reloadBoard should clear board', () => {
     component.gameState.board[0][0] = 'X';
     component.gameState.board[0][1] = 'X';
     component.gameState.board[0][2] = 'X';
@@ -76,5 +76,8 @@ describe('GameBoardComponent', () => {
     expect(component.gameState.winLine_EndBox).toEqual(undefined);
     expect(component.gameState.winLine_StartBox).toEqual(undefined);
   });
-  
+
+  describe('ShowWinner', ()=>{
+    component.gameState.board[0][0] = 'X_';
+  });
 });

@@ -1,4 +1,4 @@
-<div *ngFor="let row of gameState.board; index as i">
-    <app-game-tile *ngFor="let cell of row; index as j" (tileClickEvent)="tileClick($event)" sign="{{cell}}" x="{{i}}" y="{{j}}"></app-game-tile>
+<div *ngFor="let row of gameState.board; index as i" style="margin-bottom: 5px;">
+    <app-game-tile *ngFor="let cell of row; index as j" (tileClickEvent)="tileClick($event)" isWinning="{{checkWinner((i* 3)+j+1)}}" [ngStyle]="{'backgroundColor': checkWinner((i* 3)+j+1) ? 'red': 'lightgrey'}"  sign="{{cell}}"  x="{{i}}" y="{{j}}" style="margin-left: 5px;"></app-game-tile>
 </div>
 <button (click)="computerFirst()">Computer first</button>
