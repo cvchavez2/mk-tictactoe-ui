@@ -35,4 +35,10 @@ export class GameBoardComponent implements OnInit {
       });
     }
   }
+  computerFirst():void{
+    this.restart();
+    this.gameLogicService.getNextGamePlay(this.gameState.board).subscribe(gs => {
+      this.gameState = gs;
+    });
+  }
 }
