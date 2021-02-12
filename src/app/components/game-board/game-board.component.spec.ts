@@ -77,7 +77,42 @@ describe('GameBoardComponent', () => {
     expect(component.gameState.winLine_StartBox).toEqual(undefined);
   });
 
-  describe('ShowWinner', ()=>{
-    component.gameState.board[0][0] = 'X_';
+  // describe('ShowWinner', ()=>{
+  //   component.gameState.board[0][0] = 'X_';
+  // });
+
+  describe('ngOnInit', ()=>{
+    it('should call restart function', () => {
+      const restartSpy = spyOn(component, 'restart');
+      component.ngOnInit();
+      expect(restartSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe('restart', () =>{
+    it('it should clear the game state', () => {
+      component.gameState.board = [
+        ['X', '', ''],
+        ['X', 'O', ''],
+        ['', '', 'O'],
+      ];
+      component.restart();
+      expect(component.gameState.board).toEqual([
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', ''],
+      ]);
+    });
+  });
+
+  describe('checkWinner', () => {
+    it('should return true if win line is populated', ()=>{
+      component.gameState.winLine_StartBox = 1;
+      component.gameState.winLine_EndBox = 3;
+      expect(component.checkWinner(1)).toBeTruthy();
+      expect(component.checkWinner(2)).toBeTruthy();
+      expect(component.checkWinner(3)).toBeTruthy();
+      expect(component.checkWinner(4)).toBeFalsy();
+    });
   });
 });
