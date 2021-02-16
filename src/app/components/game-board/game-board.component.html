@@ -1,13 +1,3 @@
-<div>
-    <app-game-tile sign="X"></app-game-tile>
-    <app-game-tile sign="O"></app-game-tile>
-    <app-game-tile sign="{{sign22}}"></app-game-tile>
-    <br>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <br>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
-    <app-game-tile></app-game-tile>
+<div *ngFor="let row of gameState.board; index as i">
+    <app-game-tile *ngFor="let cell of row; index as j" (tileClickEvent)="tileClick($event)" sign="{{cell}}" x="{{i}}" y="{{j}}"></app-game-tile>
 </div>

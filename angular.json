@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "TicTacToeUI"
+  "defaultProject": "TicTacToeUI",
+  "cli": {
+    "analytics": false
+  }
 }
