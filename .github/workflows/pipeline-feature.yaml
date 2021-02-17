@@ -7,12 +7,14 @@ on:
       - 'develop'
 
 jobs:
-  build_angular:
+  build_and_test_angular:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Install Packages
         run: npm ci
+#      - name: Lint
+#        run: npm run lint   <--- optional
       - name: Build
         run: npm run build
       - name: Run Tests

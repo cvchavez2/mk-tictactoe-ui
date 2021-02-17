@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm run build
+      - name: Install Packages
+        run: npm ci
+      - name: Build
+        run: npm run build
 
   pack_angular:
     name: Publish Docker Image
