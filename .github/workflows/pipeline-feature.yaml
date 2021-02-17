@@ -11,17 +11,21 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm run build
-
-  test_angular:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install npm ci
+      - name: Install Packages
         run: npm ci
+      - name: Build
+        run: npm run build
       - name: Run Tests
         run: npm test
+
+#  test_angular:
+#    runs-on: ubuntu-20.04
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Install npm ci
+#        run: npm ci
+#      - name: Run Tests
+#        run: npm test
 
 # run angular tests
 # run analysis - sonar
