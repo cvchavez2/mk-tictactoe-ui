@@ -16,5 +16,5 @@ RUN npm run build --prod
 #stage 2 -> running the application, nginx is optimize for production
 FROM nginx:latest as prod-stage
 COPY --from=build /app/dist/TicTacToeUI /usr/share/nginx/html
-#EXPOSE 80
+EXPOSE 80
 #CMD ["nginx", "-g", "deamon off;"]
