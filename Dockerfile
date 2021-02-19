@@ -1,10 +1,3 @@
-#FROM node:current as build
-#WORKDIR /workspace
-#COPY . .
-#RUN npm ci
-#RUN npm run build
-#CMD [ "npm", "start" ]
-
 # stage 1 -> build img to generate dist folder which contains every deployable file
 FROM node:latest as build
 WORKDIR /app
@@ -17,4 +10,3 @@ RUN npm run build --prod
 FROM nginx:latest as prod-stage
 COPY --from=build /app/dist/TicTacToeUI /usr/share/nginx/html
 EXPOSE 80
-#CMD ["nginx", "-g", "deamon off;"]
