@@ -1,4 +1,6 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from 'src/app/services/communication/communication.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+ 
+  constructor(private communicationService: CommunicationService) {
 
-  constructor() { }
+   }
+
 
   ngOnInit(): void {
+  }
+
+  onBoardRestartClick()
+  {
+    this.communicationService.reloadBoard();
   }
 
 }
