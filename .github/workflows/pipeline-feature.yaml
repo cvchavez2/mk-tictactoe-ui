@@ -24,11 +24,11 @@ jobs:
         run: npm run build
       - name: Run Tests
         run: npm test
-      - name: lcov_upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: code_coverage
-          path: coverage
+#      - name: lcov_upload
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: code_coverage
+#          path: coverage
 
   analyze:
     name: Analyze Angular w/Sonar
@@ -37,11 +37,11 @@ jobs:
     steps:
       - name: actions_checkout
         uses: actions/checkout@v2.3.2
-      - name: lcov_download
-        uses: actions/download-artifact@v2
-        with:
-          name: code_coverage
-          path: coverage
+#      - name: lcov_download
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: code_coverage
+#          path: coverage
       - name: npm_cache
         uses: actions/cache@v2.1.1
         with:
