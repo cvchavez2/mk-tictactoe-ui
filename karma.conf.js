@@ -28,7 +28,7 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/TicTacToeUI'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
+//        { type: 'html' },
         { type: 'text-summary' },
         { type: 'lcovonly' }
       ]
