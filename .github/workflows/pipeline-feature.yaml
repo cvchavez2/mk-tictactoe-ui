@@ -45,7 +45,7 @@ jobs:
         uses: actions/cache@v2.1.1
         with:
           path: ~/.npm
-          key: ${{ env.CACHE_KEY_PREFIX }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ hashFiles('**/package-lock.json') }}
       - name: npm_install
         run: npm ci
       - name: npm_scan
