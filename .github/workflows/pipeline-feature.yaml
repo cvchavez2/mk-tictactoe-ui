@@ -6,6 +6,9 @@ on:
       - 'master'
       - 'develop'
 
+env:
+  CACHE_KEY_PREFIX: angular
+
 jobs:
   build_and_test_angular:
     runs-on: ubuntu-20.04
@@ -41,13 +44,13 @@ jobs:
         uses: actions/cache@v2.1.1
         with:
           path: ~/.npm
-          key: ${{ angular }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ env.CACHE_KEY_PREFIX }}-${{ hashFiles('**/package-lock.json') }}
       - name: npm_install
         run: npm ci
       - name: npm_scan
         run: npm run sonar --
-          -Dsonar.organization=${{ cvchavez2 }}
-          -Dsonar.projectKey=${{ cvchavez2_mk-tictactoe-ui }}
+#          -Dsonar.organization=${{ cvchavez2 }}
+#          -Dsonar.projectKey=${{ cvchavez2_mk-tictactoe-ui }}
           -Dsonar.login=${{ 851fdcda37cd23e725d4b9b310f8628145cf90ff }}
 
 
