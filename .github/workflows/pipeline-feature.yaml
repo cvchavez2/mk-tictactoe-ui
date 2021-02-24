@@ -49,7 +49,8 @@ jobs:
         run: npm ci
       - name: npm_scan
         run: npm run sonar --
-          -Dsonar.login=${{ 851fdcda37cd23e725d4b9b310f8628145cf90ff }}
+          -Dsonar.projectKey=cvchavez2_mk-tictactoe-ui
+          -Dsonar.login=851fdcda37cd23e725d4b9b310f8628145cf90ff
 
 
 #  test_angular:
